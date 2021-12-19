@@ -1,4 +1,4 @@
 .gradle/
 .idea/
 build/
-/src/main/java/anna/iAnnaOMG/config.json
+src/main/java/anna/iAnnaOMG/config.json
