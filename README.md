@@ -6,7 +6,7 @@ Features:
 - /urban_dictionary:  Returns the urban dictionary definition of a word.
 - /covid (wip):       Returns local COVID-19 stats.
 -------------------------------------------------------------
-                      Music Commands:
+ Music Commands:
 -------------------------------------------------------------
 - /song:              Plays a song from a URL or search term.
 - /queue:             Adds a song to a queue.
