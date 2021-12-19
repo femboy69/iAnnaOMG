@@ -1,4 +1,4 @@
 .gradle/
 .idea/
 build/
-/src/main/java/anna/iAnnaOMG/client_secret.json
+src/
