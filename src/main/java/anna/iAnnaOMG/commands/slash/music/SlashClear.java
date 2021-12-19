@@ -6,7 +6,6 @@ import anna.iAnnaOMG.listeners.lavaplayer.GuildMusicManager;
 import anna.iAnnaOMG.listeners.lavaplayer.PlayerManager;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.MessageChannel;
-import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
 import org.json.simple.parser.ParseException;
 
@@ -19,7 +18,7 @@ public class SlashClear implements SlashCommand, SlashMusic {
 
         final Member bot = m.getGuild().getSelfMember();
 
-        if (!inputHelper(event, bot, m)){
+        if (!inputHelper(event, bot, m)) {
             return;
         }
 

@@ -22,7 +22,7 @@ public class SlashRemove implements SlashCommand, SlashMusic {
 
         AudioTrack removedSong;
 
-        if (!inputHelper(event, bot, m)){
+        if (!inputHelper(event, bot, m)) {
             return;
         }
 
@@ -33,7 +33,7 @@ public class SlashRemove implements SlashCommand, SlashMusic {
 
         int index = parseInt(event.getOption("index").getAsString());
 
-        if(index > PlayerManager.songs.size() || index < 0){
+        if (index > PlayerManager.songs.size() || index < 0) {
             event.reply("`Enter a valid index.`").queue();
         }
 

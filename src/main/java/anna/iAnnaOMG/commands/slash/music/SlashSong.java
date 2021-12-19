@@ -6,12 +6,11 @@ import anna.iAnnaOMG.listeners.lavaplayer.GuildMusicManager;
 import anna.iAnnaOMG.listeners.lavaplayer.PlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
-import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.MessageChannel;
-import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
 import org.json.simple.parser.ParseException;
+
 import java.io.IOException;
 
 
