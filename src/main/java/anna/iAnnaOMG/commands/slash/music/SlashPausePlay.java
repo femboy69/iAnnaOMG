@@ -1,0 +1,40 @@
+package anna.iAnnaOMG.commands.slash.music;
+
+import anna.iAnnaOMG.commands.types.SlashCommand;
+import anna.iAnnaOMG.commands.types.SlashMusic;
+import anna.iAnnaOMG.listeners.lavaplayer.GuildMusicManager;
+import anna.iAnnaOMG.listeners.lavaplayer.PlayerManager;
+import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
+import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
+import org.json.simple.parser.ParseException;
+
+import java.io.IOException;
+
+public class SlashPausePlay implements SlashCommand, SlashMusic {
+    @Override
+    public void performCommand(SlashCommandEvent event, Member m, MessageChannel channel) throws IOException, ParseException, InterruptedException {
+
+        final Member bot = m.getGuild().getSelfMember();
+
+        if (!inputHelper(event, bot, m)){
+            return;
+        }
+
+        final GuildMusicManager musicManager = PlayerManager.getInstance().getMusicManager(m.getGuild());
+        final AudioPlayer audioPlayer = musicManager.audioPlayer;
+        final AudioTrack lastTrack = audioPlayer.getPlayingTrack();
+
+        if(musicManager.scheduler.player.isPaused()) {
+            musicManager.scheduler.player.setPaused(false);
+            event.reply("`Track Un-Paused`").queue();
+        }
+        else if (!musicManager.scheduler.player.isPaused()){
+            musicManager.scheduler.player.setPaused(true);
+            event.reply("`Track Paused`").queue();
+        }
+    }
+}
