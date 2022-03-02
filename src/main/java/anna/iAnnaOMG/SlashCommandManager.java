@@ -1,33 +1,33 @@
 package anna.iAnnaOMG;
 
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
-import anna.iAnnaOMG.commands.slash.music.*;
+import anna.iAnnaOMG.commands.slash.SlashCovidStats;
 import anna.iAnnaOMG.commands.slash.SlashSay;
 import anna.iAnnaOMG.commands.slash.SlashUrbanDictionary;
+import anna.iAnnaOMG.commands.slash.music.*;
 import anna.iAnnaOMG.commands.types.SlashCommand;
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
-import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import net.dv8tion.jda.api.requests.restaction.CommandListUpdateAction;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 import static anna.iAnnaOMG.Main.IDOne;
 import static anna.iAnnaOMG.Main.IDTwo;
 
 public class SlashCommandManager extends ListenerAdapter {
 
-    private Map<String, SlashCommand> commandsMap;
+    private final Map<String, SlashCommand> commandsMap;
 
     public SlashCommandManager() {
         // Creates a HashMap which contains they key for each command
         // And the corresponding class which will execute it
         commandsMap = new ConcurrentHashMap<>();
         commandsMap.put("say", new SlashSay()); //adds new keys to the hashmap
-        commandsMap.put("urban_dictionary", new SlashUrbanDictionary());;
+        commandsMap.put("urban_dictionary", new SlashUrbanDictionary());
         commandsMap.put("play", new SlashPlay());
         commandsMap.put("disconnect", new SlashDisconnect());
         commandsMap.put("jump", new SlashSkip());
@@ -37,11 +37,12 @@ public class SlashCommandManager extends ListenerAdapter {
         commandsMap.put("loops", new SlashLoop());
         commandsMap.put("pasue_play", new SlashPausePlay());
         commandsMap.put("remove", new SlashRemove());
+        commandsMap.put("covid_stats", new SlashCovidStats());
 
         // --Removes invalid commands and updates the command list
         // CommandListUpdateAction commands = Main.jda.updateCommands();
-        // CommandListUpdateAction commands = Main.jda.getGuildById(IDTwo).updateCommands();
-        CommandListUpdateAction commands = Main.jda.getGuildById(IDOne).updateCommands();
+        CommandListUpdateAction commands = Main.jda.getGuildById(IDTwo).updateCommands();
+        // CommandListUpdateAction commands = Main.jda.getGuildById(IDOne).updateCommands();
 
         // Add the commands to our bot instance (JDA)
         commands.addCommands(new CommandData("say", "Resends your message")
@@ -62,6 +63,7 @@ public class SlashCommandManager extends ListenerAdapter {
         commands.addCommands(new CommandData("song", "Displays info about the currently playing song."));
         commands.addCommands(new CommandData("loop", "Loops or Un-loops the current song."));
         commands.addCommands(new CommandData("pause_play", "Pauses or Plays the current song"));
+        commands.addCommands(new CommandData("covid_stats", "Returns COVID stats for Ontario"));
         commands.queue();
     }
 

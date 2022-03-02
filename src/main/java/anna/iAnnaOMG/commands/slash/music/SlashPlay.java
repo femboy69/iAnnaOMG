@@ -2,7 +2,6 @@ package anna.iAnnaOMG.commands.slash.music;
 
 import anna.iAnnaOMG.commands.types.SlashCommand;
 import anna.iAnnaOMG.listeners.lavaplayer.PlayerManager;
-import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioTrack;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.TextChannel;
@@ -24,17 +23,16 @@ public class SlashPlay implements SlashCommand {
         voiceChannel = event.getMember().getVoiceState().getChannel();
         connectedChannel = event.getGuild().getAudioManager().getConnectedChannel();
         String trackUrl = event.getOption("title").getAsString();
-
-        event.reply(":flushed:").setEphemeral(true).queue(); //replies are mandatory (set ephemeral)
-
         AudioManager manager = event.getGuild().getAudioManager();
 
         if (voiceChannel == null) {
-            channel.sendMessage("Please connect to a voice channel.").queue();
+            event.reply("Please connect to a voice channel.").queue();
             return;
         }
 
-        else if (connectedChannel == null || voiceChannel != connectedChannel){
+        event.reply(":flushed:").setEphemeral(true).queue(); //replies are mandatory (set ephemeral)
+
+        if (connectedChannel == null || voiceChannel != connectedChannel) {
             manager.openAudioConnection(voiceChannel);
         }
 

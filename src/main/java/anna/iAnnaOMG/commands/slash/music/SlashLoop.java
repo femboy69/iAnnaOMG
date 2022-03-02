@@ -1,8 +1,6 @@
 package anna.iAnnaOMG.commands.slash.music;
 
 import anna.iAnnaOMG.commands.types.SlashCommand;
-import anna.iAnnaOMG.listeners.lavaplayer.GuildMusicManager;
-import anna.iAnnaOMG.listeners.lavaplayer.PlayerManager;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;

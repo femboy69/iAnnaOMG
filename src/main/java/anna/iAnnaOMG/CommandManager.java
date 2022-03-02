@@ -1,13 +1,14 @@
 package anna.iAnnaOMG;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import anna.iAnnaOMG.commands.types.Command;
 import anna.iAnnaOMG.commands.Danganrompa;
+import anna.iAnnaOMG.commands.TikTok;
+import anna.iAnnaOMG.commands.types.Command;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class CommandManager {
 
@@ -19,12 +20,12 @@ public class CommandManager {
         commands.put("anna.danganronpa", new Danganrompa());
     }
 
-    public void performCommand(Member m, MessageChannel channel, Message message) { //performs a command based on the corresponding key
+    public void performCommand(Member m, MessageChannel channel, Message message) {
         String cmd = message.getContentDisplay();
         Command command;
 
         // If the command exists, perform it
         if ((command = commands.get(cmd)) != null)
-            command.performCommand(m, channel, message);
+            Command.performCommand(m, channel, message);
     }
 }

@@ -14,18 +14,23 @@ public class Danganrompa implements Command {
         channel.sendMessage("<@766816685604601856>" + " Play Danganronpa " + suffix()).queue();
     }
 
-    //generates a random suffix
+    // generates a random suffix
     public String suffix() {
 
-        int Random = (int)(Math.random()*4);
+        int Random = (int) (Math.random() * 4);
         String s = "";
 
         switch (Random) {
-            case 1: s = "hoe";
-            case 2: s =  "bitch";
-            case 3: s = "slut";
-            default: s = "";
-        };
+            case 1:
+                s = "hoe";
+            case 2:
+                s = "bitch";
+            case 3:
+                s = "slut";
+            default:
+                s = "";
+        }
+        ;
         return s;
     }
 

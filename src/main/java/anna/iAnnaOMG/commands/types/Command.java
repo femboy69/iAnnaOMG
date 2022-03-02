@@ -7,5 +7,5 @@ import net.dv8tion.jda.api.entities.MessageChannel;
 // Interface for all (non slash) Commands
 // Contains a method performCommand method
 public interface Command {
-    void performCommand(Member m, MessageChannel channel, Message message);
+    static void performCommand(Member m, MessageChannel channel, Message message) {}
 }

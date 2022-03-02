@@ -8,7 +8,6 @@ import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.MessageChannel;
-import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
 import org.json.simple.parser.ParseException;
 
@@ -20,7 +19,7 @@ public class SlashPausePlay implements SlashCommand, SlashMusic {
 
         final Member bot = m.getGuild().getSelfMember();
 
-        if (!inputHelper(event, bot, m)){
+        if (!inputHelper(event, bot, m)) {
             return;
         }
 
@@ -28,11 +27,10 @@ public class SlashPausePlay implements SlashCommand, SlashMusic {
         final AudioPlayer audioPlayer = musicManager.audioPlayer;
         final AudioTrack lastTrack = audioPlayer.getPlayingTrack();
 
-        if(musicManager.scheduler.player.isPaused()) {
+        if (musicManager.scheduler.player.isPaused()) {
             musicManager.scheduler.player.setPaused(false);
             event.reply("`Track Un-Paused`").queue();
-        }
-        else if (!musicManager.scheduler.player.isPaused()){
+        } else if (!musicManager.scheduler.player.isPaused()) {
             musicManager.scheduler.player.setPaused(true);
             event.reply("`Track Paused`").queue();
         }

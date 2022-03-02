@@ -4,33 +4,31 @@ import anna.iAnnaOMG.listeners.MessageListener;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
-import net.dv8tion.jda.api.entities.Activity;
-import org.json.simple.JSONArray;
+import net.dv8tion.jda.api.entities.*;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import javax.security.auth.login.LoginException;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Calendar;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Main {
 
     // Prefix for (non slash) commands
     public static final String prefix = "anna.";
-
-    // Manages (non slash) commands
-    static CommandManager cmdMan = new CommandManager();
     public static JDA jda;
-
     // Server IDs that will be used by other parts of the program
     // .gitignore
     public static String IDOne = "";
     public static String IDTwo = "";
+    // Manages (non slash) commands
+    static CommandManager cmdMan = new CommandManager();
 
-    public static void main (String[] args) throws InterruptedException, IOException, ParseException {
+    public static void main(String[] args) throws InterruptedException, IOException, ParseException {
         String activityUrl = "";
         String token = "";
 
@@ -59,7 +57,9 @@ public class Main {
         // Add our event listeners for commands and slash commands
         jda.addEventListener(new SlashCommandManager());
         jda.addEventListener(new MessageListener());
+
     }
+
     // Getter for the command manager
     public static CommandManager getCmdMan() {
         return cmdMan;
